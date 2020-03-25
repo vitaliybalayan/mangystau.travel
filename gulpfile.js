@@ -1,4 +1,4 @@
-var gulp           = require('gulp'),
+var		gulp           = require('gulp'),
 		gutil          = require('gulp-util' ),
 		sass           = require('gulp-sass'),
 		browserSync    = require('browser-sync'),
@@ -13,6 +13,7 @@ var gulp           = require('gulp'),
 		ftp            = require('vinyl-ftp'),
 		notify         = require("gulp-notify"),
 		rsync          = require('gulp-rsync');
+		terser         = require('gulp-terser');
 
 	gulp.task('browser-sync', function() {
 		browserSync({
@@ -28,11 +29,11 @@ var gulp           = require('gulp'),
 // Пользовательские скрипты проекта
 gulp.task('main-js', function() {
 	return gulp.src([
-		'app/libs/TweenMax/TweenMax.min.js',
+		// 'app/libs/TweenMax/TweenMax.min.js',
 		'app/js/main.js',
 	])
 	.pipe(concat('main.min.js'))
-	.pipe(uglify())
+	.pipe(terser())
 	.pipe(gulp.dest('app/js'));
 });
 

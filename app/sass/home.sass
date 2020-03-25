@@ -66,13 +66,18 @@
 	display: flex
 	align-items: center
 	flex-grow: 1
-	border-bottom: 1px solid rgba(255, 255, 255, 0.25)
 	padding-bottom: 20px
 	cursor: pointer
 	user-select: none
 	transition: $transition
 	margin-right: 20px
 	overflow: hidden
+	background: none
+	border-top: 0
+	border-left: 0
+	border-right: 0
+	border-bottom: 1px solid rgba(255, 255, 255, 0.25)
+	text-align: left
 	&.active, &:hover
 		border-bottom: 1px solid white
 		.m-s-f-menu--item-link
@@ -108,10 +113,10 @@
 	z-index: 3
 	&:hover ~
 		.bg-wrapper
-			transform: scale(1.07) perspective(1000px) rotate3d(0, 1, 0, -3deg)
+			transform: scale(1.07) perspective(1000px) rotate3d(0, 1, 0, -3deg)!important
 		.hero .main-slider--item--title_text
 			background-position: 50% -50%!important
-			transform: scale(1.07) perspective(1000px) rotate3d(0, 1, 0, 3deg)
+			transform: scale(1.07) perspective(1000px) rotate3d(0, 1, 0, 3deg)!important
 
 .main-slider
 	// position: relative
@@ -134,5 +139,9 @@
 			-webkit-text-fill-color: transparent
 			-webkit-background-clip: text
 			cursor: default
+			line-height: 100%
 			z-index: 2
 			transform: scale(1.2) perspective(1000px) rotate3d(0, 1, 0, 0deg)
+
+.hidden-slider-container
+	display: none
