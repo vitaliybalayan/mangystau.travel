@@ -26,7 +26,6 @@ var gulp           = require('gulp'),
 	});
 
 // Пользовательские скрипты проекта
-
 gulp.task('main-js', function() {
 	return gulp.src([
 		'app/libs/TweenMax/TweenMax.min.js',
@@ -68,7 +67,7 @@ gulp.task('sass', function() {
 
 gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
 	gulp.watch('app/sass/**/*.sass', ['sass']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
+	gulp.watch(['libs/**/*.js', 'app/js/common.js', 'app/js/main.js'], ['js']);
 	gulp.watch('app/*.html', browserSync.reload);
 });
 
@@ -86,11 +85,12 @@ gulp.task('build', ['removedist', 'imagemin', 'sass', 'js'], function() {
 		]).pipe(gulp.dest('dist'));
 
 	var buildCss = gulp.src([
-		'app/css/main.min.css',
+		'app/css/*.css',
 		]).pipe(gulp.dest('dist/css'));
 
 	var buildJs = gulp.src([
 		'app/js/scripts.min.js',
+		'app/js/main.min.js',
 		]).pipe(gulp.dest('dist/js'));
 
 	var buildFonts = gulp.src([

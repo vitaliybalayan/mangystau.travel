@@ -11,7 +11,7 @@
 	left: 0
 	right: 0
 	bottom: 0
-	z-index: 1
+	z-index: 9
 
 .main-slider
 	position: relative
@@ -24,9 +24,29 @@
 
 .main-slider--item--title
 	position: absolute
-	top: 50%
-	left: 50%
-	transform: translate(-50%, -50%)
+	width: 100%
+	height: 100vh
+	text-align: center
+	z-index: 2
+
+.main-slider--item--title_text
+	display: flex
+	flex-grow: 1
+	font-family: Montserrat, sans-serif
+	letter-spacing: 0.15em
+	text-transform: uppercase
+	font-weight: 800
+	font-size: 130px
+	color: transparent
+	user-select: none
+	height: 100vh
+	h2
+		display: flex
+		line-height: 100%
+		width: 100%
+		align-items: center
+		justify-content: center
+
 
 .g-header--desktop-container, .main-slider--footer-grid
 	flex-grow: 1
@@ -74,3 +94,4 @@
 	transition: $transition
 	&.active, &:hover
 		border-bottom: 1px solid white
+
