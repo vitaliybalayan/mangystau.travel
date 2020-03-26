@@ -37,9 +37,11 @@ $(document).ready(function() {
 			}
 		`;
 
-		let images = opts.images,image,sliderImages = [];;
-		let canvasWidth = images[0].clientWidth;
-		let canvasHeight = images[0].clientHeight;
+		// let images = opts.images,image,sliderImages = [];
+		// let canvasWidth = images[0].clientWidth;
+		let canvasHeight = document.documentElement.clientHeight;
+		let canvasWidth = document.documentElement.clientWidth;
+		// let canvasHeight = images[0].clientHeight;
 		let parent = opts.parent;
 		let renderWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 		let renderHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -58,26 +60,27 @@ $(document).ready(function() {
 			antialias: false
 		});
 
-
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setClearColor(0x23272A, 1.0);
-		renderer.setSize(renderW, renderH);
+		// renderer.setSize(renderW, renderH);
 		parent.appendChild(renderer.domElement);
 
 		let loader = new THREE.TextureLoader();
 		loader.crossOrigin = "anonymous";
 
-		images.forEach(img => {
+		// images.forEach(img => {
 
-			image = loader.load(img.getAttribute('src') + '?v=' + Date.now());
-			image.magFilter = image.minFilter = THREE.LinearFilter;
-			image.anisotropy = renderer.capabilities.getMaxAnisotropy();
-			sliderImages.push(image);
+		// 	image = loader.load(img.getAttribute('src') + '?v=' + Date.now());
+		// 	image.magFilter = image.minFilter = THREE.LinearFilter;
+		// 	image.anisotropy = renderer.capabilities.getMaxAnisotropy();
+		// 	sliderImages.push(image);
 
-		});
+		// });
 
 		let scene = new THREE.Scene();
+		
 		scene.background = new THREE.Color(0x23272A);
+		
 		let camera = new THREE.OrthographicCamera(
 		renderWidth / -2,
 		renderWidth / 2,
@@ -92,11 +95,12 @@ $(document).ready(function() {
 		let mat = new THREE.ShaderMaterial({
 			uniforms: {
 				dispFactor: {
-				type: "f",
-				value: 0.0
+					type: "f",
+					value: 0.0
+				},
+				// currentImage: { type: "t", value: sliderImages[0] },
+				// nextImage: { type: "t", value: sliderImages[1] }
 			},
-			currentImage: { type: "t", value: sliderImages[0] },
-			nextImage: { type: "t", value: sliderImages[1] } },
 			vertexShader: vertex,
 			fragmentShader: fragment,
 			transparent: true,
@@ -107,6 +111,8 @@ $(document).ready(function() {
 		let geometry = new THREE.PlaneBufferGeometry(parent.offsetWidth, parent.offsetHeight, 1);
 
 		let object = new THREE.Mesh(geometry, mat);
+		// let object = new THREE.Mesh(geometry);
+
 		object.position.set(0, 0, 0);
 		scene.add(object);
 
@@ -120,36 +126,37 @@ $(document).ready(function() {
 
 				if (!isAnimating) {
 
-				  isAnimating = true;
+					isAnimating = true;
 
-				  document.getElementById('main-slider-pagination').querySelectorAll('.active')[0].className = 'm-s-footer-menu--item';
-				  this.className = 'm-s-footer-menu--item active';
+					document.getElementById('main-slider-pagination').querySelectorAll('.active')[0].className = 'm-s-footer-menu--item';
+					this.className = 'm-s-footer-menu--item active';
 
-				  let slideId = parseInt(this.dataset.slide, 10);
+					let slideId = parseInt(this.dataset.slide, 10);
 
-				  mat.uniforms.nextImage.value = sliderImages[slideId];
-				  mat.uniforms.nextImage.needsUpdate = true;
+					// mat.uniforms.nextImage.value = sliderImages[slideId];
+					// mat.uniforms.nextImage.needsUpdate = true;
 
-				  TweenLite.to(mat.uniforms.dispFactor, 1, {
-					value: 1,
-					ease: 'Expo.easeInOut',
-					onComplete: function () {
-					  mat.uniforms.currentImage.value = sliderImages[slideId];
-					  mat.uniforms.currentImage.needsUpdate = true;
-					  mat.uniforms.dispFactor.value = 0.0;
-					  isAnimating = false;
-					} });
+					// TweenLite.to(mat.uniforms.dispFactor, 1, {
+					// 	value: 1,
+					// 	ease: 'Expo.easeInOut',
+					// 	onComplete: function () {
+					// 		mat.uniforms.currentImage.value = sliderImages[slideId];
+					// 		mat.uniforms.currentImage.needsUpdate = true;
+					// 		mat.uniforms.dispFactor.value = 0.0;
+					// 		isAnimating = false;
+					// 	}
+					// });
 
 
-					let slideTitleEl = document.getElementById('slide-title');
-					let slideStatusEl = document.getElementById('slide-status');
+					let slideBlockEl = document.getElementById('main-slide-block');
+					// let slideStatusEl = document.getElementById('slide-status');
 					
-					let nextSlideTitle = document.querySelectorAll(`[data-slide-title="${slideId}"]`)[0].innerHTML;
-					let nextSlideTitleBG = document.querySelectorAll(`[data-slide-title="${slideId}"]`)[0].style.backgroundImage;
+					let nextSlideBlock = document.querySelectorAll(`[data-slide-block="${slideId}"]`)[0].innerHTML;
+					// let nextSlideTitleBG = document.querySelectorAll(`[data-slide-title="${slideId}"]`)[0].style.backgroundImage;
 					
-					let nextSlideStatus = document.querySelectorAll(`[data-slide-status="${slideId}"]`)[0].style.backgroundImage;
+					// let nextSlideStatus = document.querySelectorAll(`[data-slide-status="${slideId}"]`)[0].style.backgroundImage;
 
-					TweenLite.fromTo(slideTitleEl, 0.5, {
+					TweenLite.fromTo(slideBlockEl, 0.5, {
 						autoAlpha: 1,
 						filter: 'blur(0px)',
 						y: 0,
@@ -161,12 +168,14 @@ $(document).ready(function() {
 						y: 20,
 						ease: 'Expo.easeIn',
 						onComplete: function () {
-							slideTitleEl.innerHTML = nextSlideTitle;
-							slideStatusEl.style.backgroundImage = nextSlideTitleBG;
+							slideBlockEl.innerHTML = nextSlideBlock;
 
+							console.log(nextSlideBlock);
+
+							// slideStatusEl.style.backgroundImage = nextSlideTitleBG;
 							// console.log(nextSlideTitleBG);
 
-							TweenLite.to(slideTitleEl, 0.5, {
+							TweenLite.to(slideBlockEl, 0.5, {
 								autoAlpha: 1,
 								filter: 'blur(0px)',
 								y: 0
@@ -175,30 +184,29 @@ $(document).ready(function() {
 					});
 
 
-					TweenLite.fromTo(slideStatusEl, 0.5, {
-						autoAlpha: 1,
-						filter: 'blur(0px)',
-						y: 0
-					},
-					{
-						autoAlpha: 0,
-						filter: 'blur(10px)',
-						y: 20,
-						ease: 'Expo.easeIn',
-						onComplete: function () {
-							slideStatusEl.style.backgroundImage = nextSlideStatus;
+					// TweenLite.fromTo(slideStatusEl, 0.5, {
+					// 	autoAlpha: 1,
+					// 	filter: 'blur(0px)',
+					// 	y: 0
+					// },
+					// {
+					// 	autoAlpha: 0,
+					// 	filter: 'blur(10px)',
+					// 	y: 20,
+					// 	ease: 'Expo.easeIn',
+					// 	onComplete: function () {
+					// 		slideStatusEl.style.backgroundImage = nextSlideStatus;
 
-							// console.log(nextSlideStatus);
+					// 		// console.log(nextSlideStatus);
 
-							TweenLite.to(slideStatusEl, 0.5, {
-								autoAlpha: 1,
-								filter: 'blur(0px)',
-								y: 0,
-								delay: 0.1
-							});
-						}
-					});
-
+					// 		TweenLite.to(slideStatusEl, 0.5, {
+					// 			autoAlpha: 1,
+					// 			filter: 'blur(0px)',
+					// 			y: 0,
+					// 			delay: 0.1
+					// 		});
+					// 	}
+					// });
 
 				}
 
@@ -221,15 +229,16 @@ $(document).ready(function() {
 		animate();
 	};
 
+	const el = document.getElementById('main-slider');
+	// const imgs = Array.from(el.querySelectorAll('img'));
+
+	new displacementSlider({
+		parent: el,
+		// images: imgs
+	});
+
 	imagesLoaded(document.querySelectorAll('img'), () => {
 		// document.body.classList.remove('loading');
 
-		const el = document.getElementById('main-slider');
-		const imgs = Array.from(el.querySelectorAll('img'));
-
-		new displacementSlider({
-			parent: el,
-			images: imgs
-		});
 	});
 });
