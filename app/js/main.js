@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	const displacementSlider = function (opts) {
+		
 		let vertex = `
 			varying vec2 vUv;
 			void main() {
@@ -10,42 +11,35 @@ $(document).ready(function() {
 
 		let fragment = `
 			varying vec2 vUv;
-
 			uniform sampler2D currentImage;
 			uniform sampler2D nextImage;
-
 			uniform float dispFactor;
-
 			void main() {
-
 				vec2 uv = vUv;
 				vec4 _currentImage;
 				vec4 _nextImage;
 				float intensity = 0.3;
-
 				vec4 orig1 = texture2D(currentImage, uv);
 				vec4 orig2 = texture2D(nextImage, uv);
-				
 				_currentImage = texture2D(currentImage, vec2(uv.x, uv.y + dispFactor * (orig2 * intensity)));
-
 				_nextImage = texture2D(nextImage, vec2(uv.x, uv.y + (1.0 - dispFactor) * (orig1 * intensity)));
-
 				vec4 finalTexture = mix(_currentImage, _nextImage, dispFactor);
-
 				gl_FragColor = finalTexture;
-
 			}
 		`;
 
-		// let images = opts.images,image,sliderImages = [];
-		// let canvasWidth = images[0].clientWidth;
-		let canvasHeight = document.documentElement.clientHeight;
-		let canvasWidth = document.documentElement.clientWidth;
-		// let canvasHeight = images[0].clientHeight;
+		let images = opts.images, image, sliderImages = [];
+
+		let canvasWidth = images[0].clientWidth;
+		let canvasHeight = images[0].clientHeight;
+		
 		let parent = opts.parent;
+
 		let renderWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 		let renderHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
+		// console.log(renderHeight);
+		
 		let renderW, renderH;
 
 		if (renderWidth > canvasWidth) {
@@ -57,38 +51,35 @@ $(document).ready(function() {
 		renderH = canvasHeight;
 
 		let renderer = new THREE.WebGLRenderer({
-			antialias: false
+			antialias: false,
 		});
 
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setClearColor(0x23272A, 1.0);
-		// renderer.setSize(renderW, renderH);
+		renderer.setSize(renderW, renderH);
+		renderer.domElement.className = 'bg-wrapper bg';
+
+		// console.log(renderer.domElement);
+
 		parent.appendChild(renderer.domElement);
 
 		let loader = new THREE.TextureLoader();
 		loader.crossOrigin = "anonymous";
 
-		// images.forEach(img => {
+		images.forEach(img => {
 
-		// 	image = loader.load(img.getAttribute('src') + '?v=' + Date.now());
-		// 	image.magFilter = image.minFilter = THREE.LinearFilter;
-		// 	image.anisotropy = renderer.capabilities.getMaxAnisotropy();
-		// 	sliderImages.push(image);
+			image = loader.load(img.getAttribute('src') + '?v=' + Date.now());
+			image.magFilter = image.minFilter = THREE.LinearFilter;
+			image.anisotropy = renderer.capabilities.getMaxAnisotropy();
+			sliderImages.push(image);
 
-		// });
+		});
 
 		let scene = new THREE.Scene();
 		
 		scene.background = new THREE.Color(0x23272A);
 		
-		let camera = new THREE.OrthographicCamera(
-		renderWidth / -2,
-		renderWidth / 2,
-		renderHeight / 2,
-		renderHeight / -2,
-		1,
-		1000);
-
+		let camera = new THREE.OrthographicCamera(renderWidth / -2, renderWidth / 2, renderHeight / 2, renderHeight / -2, 1, 1000);
 
 		camera.position.z = 1;
 
@@ -98,8 +89,8 @@ $(document).ready(function() {
 					type: "f",
 					value: 0.0
 				},
-				// currentImage: { type: "t", value: sliderImages[0] },
-				// nextImage: { type: "t", value: sliderImages[1] }
+				currentImage: { type: "t", value: sliderImages[0] },
+				nextImage: { type: "t", value: sliderImages[1] }
 			},
 			vertexShader: vertex,
 			fragmentShader: fragment,
@@ -133,34 +124,32 @@ $(document).ready(function() {
 
 					let slideId = parseInt(this.dataset.slide, 10);
 
-					// mat.uniforms.nextImage.value = sliderImages[slideId];
-					// mat.uniforms.nextImage.needsUpdate = true;
+					mat.uniforms.nextImage.value = sliderImages[slideId];
+					mat.uniforms.nextImage.needsUpdate = true;
 
-					// TweenLite.to(mat.uniforms.dispFactor, 1, {
-					// 	value: 1,
-					// 	ease: 'Expo.easeInOut',
-					// 	onComplete: function () {
-					// 		mat.uniforms.currentImage.value = sliderImages[slideId];
-					// 		mat.uniforms.currentImage.needsUpdate = true;
-					// 		mat.uniforms.dispFactor.value = 0.0;
-					// 		isAnimating = false;
-					// 	}
-					// });
+					TweenLite.to(mat.uniforms.dispFactor, 1, {
+						value: 1,
+						ease: 'Expo.easeInOut',
+						onComplete: function () {
+							mat.uniforms.currentImage.value = sliderImages[slideId];
+							mat.uniforms.currentImage.needsUpdate = true;
+							mat.uniforms.dispFactor.value = 0.0;
+							isAnimating = false;
+						}
+					});
 
 
 					let slideBlockEl = document.getElementById('main-slide-block');
-					// let slideStatusEl = document.getElementById('slide-status');
+					let slideStatusEl = document.getElementById('slide-status');
 					
 					let nextSlideBlock = document.querySelectorAll(`[data-slide-block="${slideId}"]`)[0].innerHTML;
-					// let nextSlideTitleBG = document.querySelectorAll(`[data-slide-title="${slideId}"]`)[0].style.backgroundImage;
-					
-					// let nextSlideStatus = document.querySelectorAll(`[data-slide-status="${slideId}"]`)[0].style.backgroundImage;
+					let nextSlideStatus = document.querySelectorAll(`[data-slide-status="${slideId}"]`)[0].innerHTML;
 
 					TweenLite.fromTo(slideBlockEl, 0.5, {
 						autoAlpha: 1,
 						filter: 'blur(0px)',
 						y: 0,
-						transform: 'scale(1.2)'
+						// transform: 'scale(1.2)'
 					},
 					{
 						autoAlpha: 0,
@@ -172,8 +161,6 @@ $(document).ready(function() {
 
 							console.log(nextSlideBlock);
 
-							// slideStatusEl.style.backgroundImage = nextSlideTitleBG;
-							// console.log(nextSlideTitleBG);
 
 							TweenLite.to(slideBlockEl, 0.5, {
 								autoAlpha: 1,
@@ -184,29 +171,29 @@ $(document).ready(function() {
 					});
 
 
-					// TweenLite.fromTo(slideStatusEl, 0.5, {
-					// 	autoAlpha: 1,
-					// 	filter: 'blur(0px)',
-					// 	y: 0
-					// },
-					// {
-					// 	autoAlpha: 0,
-					// 	filter: 'blur(10px)',
-					// 	y: 20,
-					// 	ease: 'Expo.easeIn',
-					// 	onComplete: function () {
-					// 		slideStatusEl.style.backgroundImage = nextSlideStatus;
+					TweenLite.fromTo(slideStatusEl, 0.5, {
+						autoAlpha: 1,
+						filter: 'blur(0px)',
+						y: 0
+					},
+					{
+						autoAlpha: 0,
+						filter: 'blur(10px)',
+						y: 20,
+						ease: 'Expo.easeIn',
+						onComplete: function () {
+							slideStatusEl.innerHTML = nextSlideStatus;
 
-					// 		// console.log(nextSlideStatus);
+							// console.log(nextSlideStatus);
 
-					// 		TweenLite.to(slideStatusEl, 0.5, {
-					// 			autoAlpha: 1,
-					// 			filter: 'blur(0px)',
-					// 			y: 0,
-					// 			delay: 0.1
-					// 		});
-					// 	}
-					// });
+							TweenLite.to(slideStatusEl, 0.5, {
+								autoAlpha: 1,
+								filter: 'blur(0px)',
+								y: 0,
+								delay: 0.1
+							});
+						}
+					});
 
 				}
 
@@ -229,16 +216,17 @@ $(document).ready(function() {
 		animate();
 	};
 
-	const el = document.getElementById('main-slider');
-	// const imgs = Array.from(el.querySelectorAll('img'));
-
-	new displacementSlider({
-		parent: el,
-		// images: imgs
-	});
 
 	imagesLoaded(document.querySelectorAll('img'), () => {
 		// document.body.classList.remove('loading');
 
+		const el = document.getElementById('main-slider');
+		const imgs = Array.from(el.querySelectorAll('img'));
+
+		new displacementSlider({
+			parent: el,
+			images: imgs
+		});
 	});
+
 });
