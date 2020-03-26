@@ -159,7 +159,7 @@ $(document).ready(function() {
 						onComplete: function () {
 							slideBlockEl.innerHTML = nextSlideBlock;
 
-							console.log(nextSlideBlock);
+							// console.log(nextSlideBlock);
 
 
 							TweenLite.to(slideBlockEl, 0.5, {
