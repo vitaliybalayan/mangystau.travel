@@ -1,6 +1,9 @@
 @import "vars"
 @import url('https://fonts.googleapis.com/css?family=PT+Serif:700&display=swap&subset=cyrillic')
 
+.inner-page *
+	transition: $transition
+
 .inner-page--main_block
 	position: relative
 
@@ -79,6 +82,7 @@
 	max-width: 1340px
 	grid-template-columns: 2fr .9672fr
 	grid-gap: 30px
+	opacity: 1
 
 .inner-aside-block
 	position: relative
@@ -121,7 +125,6 @@
 	background-position: center!important
 	background-size: cover!important
 	cursor: pointer
-
 
 .inner-aside-image--container
 	position: relative
@@ -175,3 +178,38 @@
 
 .inner-page--main-content
 	position: relative
+
+.inner-aside-block.showing
+	.inner-aside-image
+		width: 100% !important
+		position: relative
+		transform: none !important
+		left: unset !important
+		animation: slide-top 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+	.inner-aside-image--container
+		display: grid
+		grid-template-columns: 1fr 1fr 1fr
+		grid-gap: 30px
+		box-shadow: none
+		&:hover
+			transform: unset !important
+	.aside-photogallery--content
+		animation: slide-top 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+	.inner-aside-image:hover
+		margin-top: -7px
+	.inner-aside-image--content
+		display: block
+	&.aside-photogallery
+		.inner-aside-image--content
+			display: grid
+			grid-template-columns: 1fr 1fr 1fr
+			grid-gap: 30px
+			margin-top: 30px
+
+@keyframes slide-top
+	0%
+		transform: translateY(50px)
+		opacity: 0
+	100%
+		transform: translateY(0px)
+		opacity: 1
