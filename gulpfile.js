@@ -43,7 +43,6 @@ gulp.task('sass', function() {
 // Пользовательские скрипты проекта
 gulp.task('main-js', function() {
 	return gulp.src([
-		// 'app/libs/TweenMax/TweenMax.min.js',
 		'app/js/main.js',
 	])
 	.pipe(concat('main.min.js'))
@@ -118,7 +117,7 @@ gulp.task('code', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'));
-	gulp.watch(['libs/**/*.js', 'app/js/common.js', 'app/js/main.js'], gulp.parallel('js'));
+	gulp.watch(['libs/**/*.js', 'app/js/common.js', 'app/js/main.js', 'app/js/inner.js'], gulp.parallel('js'));
 	gulp.watch('app/*.html', gulp.parallel('code'));
 });
 
