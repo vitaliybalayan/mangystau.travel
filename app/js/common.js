@@ -7,3 +7,31 @@ $(function() {
 	});
 
 });
+
+$(document).on('click', '.image-popup--button', function(element) {
+	element.preventDefault();
+	var src = $(this).data('img');
+	showImagePopup(src);
+});
+
+$(document).on('click', '.popup-overlay', function() {
+	hidePopups();
+});
+
+function showImagePopup(imgSrc) {
+	console.log(imgSrc);
+
+	var img = '<img src='+ imgSrc +'>';
+	var block = $('.popup-img');
+
+	block.fadeIn();
+	block.html(img);
+
+	$('.popup-overlay').fadeIn();
+}
+
+function hidePopups() {
+	$('.popup-overlay').fadeOut(250);
+
+	$('.popup').fadeOut(250);
+}
