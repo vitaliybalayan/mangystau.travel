@@ -136,11 +136,9 @@
 	border-radius: 10px
 	box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.025)
 	margin-top: 20px
-	transition: $transition
 
 .inner-aside-image--container
 	.inner-aside-image
-		transition: $transition
 		position: absolute
 		&:first-child
 			position: relative
@@ -215,7 +213,39 @@
 // 			margin-top: 30px
 
 .aside-block--container
-	position: fixed
+	position: sticky
+
+.aside-content
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	z-index: -1
+
+.inner-aside-block.showing
+	.inner-aside-image
+		position: absolute
+		transform: unset
+		left: unset
+		animation: slide-top 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+	.inner-aside-image--container
+		display: grid
+		grid-template-columns: 1fr 1fr 1fr
+		grid-gap: 30px
+		box-shadow: none
+
+.inner-aside-block.showing
+	.inner-aside-image:hover
+		// margin-top: -7px
+	.inner-aside-image--container:hover
+		transform: unset !important
+		.inner-aside-image
+			transform: unset !important
+
+.inner-aside-block.showing .inner-aside-image:hover
+	// transform: translateY(-7px)!important
+	margin-top: -7px
 
 // == == //
 
@@ -341,3 +371,5 @@
 		transform: translate(-50%, -50%) rotate(45deg) 
 	100%
 		transform: translate(-50%, -50%) rotate(45deg) scale(1.1)
+
+@import "inner-media"
