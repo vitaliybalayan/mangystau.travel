@@ -1,9 +1,81 @@
 $(document).ready(function () {
+	
 	//initialize swiper when document ready
 	$('.inner-page-slider').slick({
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
 		prevArrow: $('.slider-prev'),
 		nextArrow: $('.slider-next'),
 	});
+
+	var mainMenu = $('.global-header');
+
+	var previewBlock = $('[data-inner=1]');
+	var contentBlock = $('[data-inner=2]');
+
+	var mainBlock = $('.inner-page');
+
+	var placesBlock = $('[data-inner=3]');
+
+
+	var tempScrollTop = 0;
+	var $bool = 'false';
+
+	$(window).scroll(function() {
+
+		var $this = $(this).scrollTop();
+
+		// begin::Scroll Preview block to Content
+		if ($this > previewBlock.outerHeight() - mainMenu.outerHeight()) {
+			mainMenu.addClass('g-header--fixed');
+			mainMenu.find('.g-header--desktop').removeClass('white-mode');
+			mainMenu.find('.g-header--desktop').addClass('dark-mode');
+		} else {
+			mainMenu.removeClass('g-header--fixed');
+			mainMenu.find('.g-header--desktop').removeClass('dark-mode');
+			mainMenu.find('.g-header--desktop').addClass('white-mode');
+		}
+		// end::Scroll Preview block to Content
+
+		if ($this > placesBlock.offset().top - mainMenu.outerHeight() / 2) {
+			mainMenu.removeClass('g-header--fixed');
+			mainMenu.find('.g-header--desktop').removeClass('dark-mode');
+			mainMenu.find('.g-header--desktop').addClass('sand-mode');
+		} else {
+			mainMenu.find('.g-header--desktop').removeClass('sand-mode');
+			// mainMenu.find('.g-header--desktop').addClass('dark-mode');
+		}
+
+		tempScrollTop = $this;
+	});
+
+	var $section = $('[class*=f-section]');
+
+	// $section.bind('swipeDown', function() {
+	// 	console.log('kek');
+	// });
+
+	// $section.mousewheel(function(event, delta) {
+
+	// 	var $this = $(this).scrollTop();
+
+	// 	if (delta < 0) {
+	// 		event.preventDefault();
+
+	// 		$('html, body').animate({
+	// 			scrollTop: $this + $(this).outerHeight()
+	// 		}, 250);
+	// 	} else {
+	// 		event.preventDefault();
+
+	// 		$('html, body').animate({
+	// 			scrollTop: $this - $(this).outerHeight()
+	// 		}, 250);
+	// 	}
+		
+	// });
+
 });
 
 $(document).on('click', '.inner-page--menu--sticky [data-aside_show="fullpage"]', function(block) {

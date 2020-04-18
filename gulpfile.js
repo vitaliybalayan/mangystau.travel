@@ -41,6 +41,33 @@ gulp.task('sass', function() {
 });
 
 // Пользовательские скрипты проекта
+gulp.task('common-js', function() {
+	return gulp.src([
+		'app/libs/jquery-3.4.1.min.js',
+		'app/libs/slick.min.js',
+		// 'app/libs/jquery-git.js',
+		// 'app/libs/jquery.mousewheel.min.js',
+		'app/libs/aos.js',
+		'app/js/common.js',
+		])
+	.pipe(concat('common.min.js'))
+	.pipe(uglify()) // Минимизировать весь js (на выбор)
+	.pipe(gulp.dest('app/js'))
+	.pipe(browserSync.reload({ stream: true }));
+});
+
+gulp.task('inner-js', function() {
+	return gulp.src([
+		// 'app/libs/fullpage/vendors/scrolloverflow.min.js',
+		// 'app/libs/fullpage/dist/fullpage.min.js',
+		'app/js/inner.js',
+		])
+	.pipe(concat('inner.min.js'))
+	.pipe(uglify()) // Минимизировать весь js (на выбор)
+	.pipe(gulp.dest('app/js'))
+	.pipe(browserSync.reload({ stream: true }));
+});
+
 gulp.task('main-js', function() {
 	return gulp.src([
 		'app/js/main.js',
@@ -48,16 +75,6 @@ gulp.task('main-js', function() {
 	.pipe(concat('main.min.js'))
 	.pipe(terser())
 	.pipe(gulp.dest('app/js'));
-});
-
-gulp.task('js', function() {
-	return gulp.src([
-		'app/js/common.js', // Всегда в конце
-		])
-	.pipe(concat('scripts.min.js'))
-	.pipe(uglify()) // Минимизировать весь js (на выбор)
-	.pipe(gulp.dest('app/js'))
-	.pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('imagemin', function() {
@@ -71,10 +88,10 @@ gulp.task('clearcache', function () { return cache.clearAll(); });
 
 gulp.task('buildFiles', function() { return gulp.src(['app/*.html', 'app/.htaccess']).pipe(gulp.dest('dist')) });
 gulp.task('buildCss', function() { return gulp.src(['app/css/*.css']).pipe(gulp.dest('dist/css')) });
-gulp.task('buildJs', function() { return gulp.src(['app/js/scripts.min.js']).pipe(gulp.dest('dist/js')) });
+gulp.task('buildJs', function() { return gulp.src(['app/js/*.min.js']).pipe(gulp.dest('dist/js')) });
 gulp.task('buildFonts', function() { return gulp.src(['app/fonts/**/*']).pipe(gulp.dest('dist/fonts')) });
 
-gulp.task('build', gulp.series('removedist', 'imagemin', 'sass', 'js', 'buildFiles', 'buildCss', 'buildJs', 'buildFonts'));
+gulp.task('build', gulp.series('removedist', 'imagemin', 'sass', 'common-js', 'inner-js', 'buildFiles', 'buildCss', 'buildJs', 'buildFonts'));
 
 gulp.task('deploy', function() {
 
@@ -117,8 +134,8 @@ gulp.task('code', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'));
-	gulp.watch(['libs/**/*.js', 'app/js/common.js', 'app/js/main.js', 'app/js/inner.js'], gulp.parallel('js'));
+	gulp.watch(['libs/**/*.js', 'app/js/common.js', 'app/js/main.js', 'app/js/inner.js'], gulp.parallel('common-js', 'inner-js'));
 	gulp.watch('app/*.html', gulp.parallel('code'));
 });
 
-gulp.task('default', gulp.parallel('sass', 'js', 'browser-sync', 'watch'));
+gulp.task('default', gulp.parallel('sass', 'common-js', 'inner-js', 'browser-sync', 'watch'));

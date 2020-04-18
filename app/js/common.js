@@ -1,4 +1,8 @@
 $(function() {
+
+	// begin::Init AOS Plugin
+	AOS.init();
+	// end::Init AOS Plugin
 	
 	$('.inner-page--main_block--background').hover(function() {
 		$('.i-p--m_b--f-link').addClass('hovered');

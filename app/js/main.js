@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	const displacementSlider = function (opts) {
-		
+
 		let vertex = `
 			varying vec2 vUv;
 			void main() {
@@ -32,14 +32,14 @@ $(document).ready(function() {
 
 		let canvasWidth = images[0].clientWidth;
 		let canvasHeight = images[0].clientHeight;
-		
+
 		let parent = opts.parent;
 
 		let renderWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 		let renderHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
 		// console.log(renderHeight);
-		
+
 		let renderW, renderH;
 
 		if (renderWidth > canvasWidth) {
@@ -76,9 +76,9 @@ $(document).ready(function() {
 		});
 
 		let scene = new THREE.Scene();
-		
+
 		scene.background = new THREE.Color(0x23272A);
-		
+
 		let camera = new THREE.OrthographicCamera(renderWidth / -2, renderWidth / 2, renderHeight / 2, renderHeight / -2, 1, 1000);
 
 		camera.position.z = 1;
@@ -141,7 +141,7 @@ $(document).ready(function() {
 
 					let slideBlockEl = document.getElementById('main-slide-block');
 					let slideStatusEl = document.getElementById('slide-status');
-					
+
 					let nextSlideBlock = document.querySelectorAll(`[data-slide-block="${slideId}"]`)[0].innerHTML;
 					let nextSlideStatus = document.querySelectorAll(`[data-slide-status="${slideId}"]`)[0].innerHTML;
 
@@ -159,7 +159,7 @@ $(document).ready(function() {
 						onComplete: function () {
 							slideBlockEl.innerHTML = nextSlideBlock;
 
-							// console.log(nextSlideBlock);
+							console.log(nextSlideBlock);
 
 
 							TweenLite.to(slideBlockEl, 0.5, {
@@ -228,5 +228,4 @@ $(document).ready(function() {
 			images: imgs
 		});
 	});
-
 });
