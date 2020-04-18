@@ -56,7 +56,9 @@ h1, h2, h3
 	margin: 0
 
 .container
-	width: 1200px
+	width: 100%
+	max-width: 1390px
+	padding: 0 25px
 	margin: 0 auto
 
 .global-header
@@ -67,6 +69,9 @@ h1, h2, h3
 	padding: 25px 0
 	transition: $transition
 	z-index: 999
+
+.g-header--no-fixed
+	position: absolute
 
 .flex-center
 	display: flex
@@ -241,6 +246,25 @@ section[class*='f-section'], footer[class*='f-section']
 	grid-template-columns: 1fr 1fr 1fr
 	grid-column-gap: 30px
 
+.places-preview--cards--layout-top
+	z-index: 2
+	.places-preview--card
+		&:nth-child(1)
+			height: 335px
+			clip-path: url('#places-mask--1')
+
+		&:nth-child(2)
+			height: 302px
+			clip-path: url('#places-mask--2')
+			.places-preview--cart-content
+				padding-bottom: 50px
+
+		&:nth-child(3)
+			height: 305px
+			clip-path: url('#places-mask--3')
+			.places-preview--cart-content
+				padding-bottom: 50px
+
 .places-preview--cards--layout-bottom
 	align-items: end
 	top: 230px
@@ -289,25 +313,6 @@ section[class*='f-section'], footer[class*='f-section']
 	opacity: 0
 	transition: $transition
 
-.places-preview--cards--layout-top
-	z-index: 2
-	.places-preview--card
-		&:nth-child(1)
-			height: 335px
-			clip-path: url('#places-mask--1')
-
-		&:nth-child(2)
-			height: 302px
-			clip-path: url('#places-mask--2')
-			.places-preview--cart-content
-				padding-bottom: 50px
-
-		&:nth-child(3)
-			height: 305px
-			clip-path: url('#places-mask--3')
-			.places-preview--cart-content
-				padding-bottom: 50px
-
 .svg-masked
 	position: absolute
 	top: -100vw
@@ -335,6 +340,7 @@ section[class*='f-section'], footer[class*='f-section']
 		justify-content: center
 		align-items: center
 		flex-direction: column
+		padding: 100px 0
 	.f-section--content
 		width: 100%
 
