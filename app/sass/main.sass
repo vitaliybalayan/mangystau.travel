@@ -440,4 +440,164 @@ section[class*='f-section'], footer[class*='f-section']
 .terms-section--right img
 	height: 20px
 
+.guide-f-section--container
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-direction: column
+	padding: 100px 0
+	height: 100%
+	.f-section--content
+		width: 100%
+
+.f-section--grid-col-3
+	display: grid
+	grid-template-columns: 1fr 1fr 1fr
+	grid-gap: 30px
+
+.f-section--grid-item
+	display: flex
+	justify-content: center
+	align-items: center
+	text-align: center
+	min-height: 250px
+	padding: 40px
+	color: white
+	text-decoration: none
+	border-radius: 10px
+	overflow: hidden
+	transition: $transition
+	background-size: cover !important
+	background-position: center !important
+
+.f-section--grid-item--content
+	h2
+		font-weight: normal
+		font-size: 36px
+		line-height: 100%
+	p
+		font-size: 14px
+		line-height: 100%
+		opacity: 0.75
+		margin: 10px 0 0
+
+.f-section--grid-item:hover
+	transform: translateY(-5px)
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1)
+
+.news-preview--container
+	display: grid
+	grid-template-columns: 1fr 1fr
+	margin: 0 -15px
+	*
+		transition: $transition
+		&:before, &:after
+			transition: $transition
+
+
+.news-preview--first .news-preview--image
+	min-height: 380px
+	color: white
+	background-size: cover !important
+	background-position: center !important
+
+.news-preview--image
+	position: relative
+	border-radius: 10px
+	overflow: hidden
+	&:hover
+		transform: translateY(-7px)
+
+.news-preview--first
+	text-decoration: none
+	padding: 15px
+	color: black
+
+.news-preview--header
+	display: flex
+	align-items: center
+	font-size: 13px
+	margin-bottom: 16px
+
+.news-preview--category
+	background: rgba(0, 0, 0, 0.25)
+	padding: 10px 20px
+	border-radius: 100px
+	line-height: 100%
+
+.news-preview--first
+	.news-preview--header
+		> *
+			margin-right: 20px
+		position: absolute
+		bottom: 25px
+		left: 25px
+		right: 25px
+		margin-bottom: 0
+		font-size: unset
+	&:hover
+		background: rgba(0, 0, 0, 0.05)
+		border-radius: 10px
+	.news-preview--content
+		margin-top: 25px
+	h2
+		font-weight: 500
+		font-size: 22px
+		line-height: 100%
+	p
+		font-weight: normal
+		font-size: 16px
+		line-height: 150%
+		margin: 18px 0 0
+
+.news-preview--item
+	display: flex
+	align-items: center
+	padding: 15px
+	color: black
+	text-decoration: none
+	border-radius: 10px
+	&:hover
+		background: rgba(0, 0, 0, 0.05)
+
+.news-preview--item-image
+	min-width: 200px
+	min-height: 120px
+	margin-right: 20px
+	border-radius: 10px
+	overflow: hidden
+	background-size: cover !important
+	background-position: center !important
+
+.news-preview--header .--right
+	display: flex
+	> *
+		margin-left: 10px
+
+.news-preview--item
+	h2
+		font-style: normal
+		font-weight: 500
+		font-size: 16px
+		line-height: 100%
+		white-space: nowrap
+		text-overflow: ellipsis
+		overflow: hidden
+		max-width: 400px
+	p
+		font-weight: normal
+		font-size: 14px
+		line-height: 150%
+		margin: 7px 0 0
+		max-height: 42px
+		overflow: hidden
+
+.news-preview--item-image:hover
+	transform: translateY(-5px)
+
+.news-f-section--container
+	display: flex
+	flex-direction: column
+	padding: 100px 0
+
 @import "media" // Всегда в конце
