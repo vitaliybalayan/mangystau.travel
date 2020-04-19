@@ -86,7 +86,7 @@ gulp.task('imagemin', function() {
 gulp.task('removedist', function() { return del(['dist'], { force: true }) });
 gulp.task('clearcache', function () { return cache.clearAll(); });
 
-gulp.task('buildFiles', function() { return gulp.src(['app/*.html', 'app/.htaccess']).pipe(gulp.dest('dist')) });
+gulp.task('buildFiles', function() { return gulp.src(['app/*.html', 'app/ht.access']).pipe(gulp.dest('dist')) });
 gulp.task('buildCss', function() { return gulp.src(['app/css/*.css']).pipe(gulp.dest('dist/css')) });
 gulp.task('buildJs', function() { return gulp.src(['app/js/*.min.js']).pipe(gulp.dest('dist/js')) });
 gulp.task('buildFonts', function() { return gulp.src(['app/fonts/**/*']).pipe(gulp.dest('dist/fonts')) });
