@@ -12,10 +12,44 @@ $(function() {
 		$('.i-p--m_b--f-link').removeClass('hovered');
 	});
 
+	// begin::Guides and places slider
+	$('.guide-f-section-slider, .places-preview--cards-slider').slick({
+		arrows: false,
+		autoplay: true,
+		autoplaySpeed: 3000,
+	});
+	// end::Guides slider
+
 });
 
 $(document).ready(function() {
 	// 
+});
+
+$(document).on('click', '.g-selected-lang', function(e) {
+	e.preventDefault();
+
+	var $menuLang = $('.g-parent-lang');
+
+	if ($menuLang.hasClass('active')) {
+		$menuLang.slideUp();
+		$menuLang.removeClass('active');
+	} else {
+		$menuLang.slideDown();
+		$menuLang.addClass('active');
+	}
+
+	return false;
+});
+
+$(document).mouseup(function (e) {
+	var $menuLang = $('.g-parent-lang');
+
+    var container = $('.g-select-lang');
+    if (container.has(e.target).length === 0){
+        $menuLang.slideUp();
+		$menuLang.removeClass('active');
+    }
 });
 
 $(document).on('click', '.image-popup--button', function(element) {
