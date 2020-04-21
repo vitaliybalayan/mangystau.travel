@@ -30,7 +30,9 @@
 
 	<!-- begin::This page styles -->
 	<link rel="stylesheet" href="css/home.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullpage.js@3.0.8/dist/fullpage.min.css">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullpage.js@3.0.8/dist/fullpage.min.css"> -->
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css">
 	<!-- end::This page styles -->
 </head>
 
@@ -40,48 +42,41 @@
 	<header class="global-header">
 		<div class="header-container">
 			<div class="g-header--desktop white-mode">
-				<div class="layout-space layout-space-left"></div>
-				<div class="g-header--desktop-container flex-center">
-					
-					<div class="g-header-logotype">
-						<a href="#" class="g-desktop-logotype" onclick="return false;"></a>
-					</div>
-
-					<div class="g-header-menu flex-center --right">
-						
-						<nav class="g-desktop-menu flex-center">
-							<a href="#" onclick="return false;" class="g-desktop-menu--item">Новости</a>
-							<a href="#" onclick="return false;" class="g-desktop-menu--item">Путеводитель</a>
-							<a href="#" onclick="return false;" class="g-desktop-menu--item">Места</a>
-							<a href="#" onclick="return false;" class="g-desktop-menu--item">Преимущества</a>
-							<a href="#" onclick="return false;" class="g-desktop-menu--item">Обратная связь</a>
-						</nav>
-
-						<div class="g-header-select-lang">
-							<ul class="g-select-lang">
-								<li class="g-selected-lang"><a href="#" onclick="return false;"><img src="img/icons/flag-russia.svg" alt="Русский язык"></a></li>
-								<ul class="g-parent-lang" style="display: none;">
-									<li><a href="#" onclick="return false;"><img src="img/icons/flag-russia.svg" alt="Русский язык"></a></li>
-									<li><a href="#" onclick="return false;"><img src="img/icons/flag-russia.svg" alt="Русский язык"></a></li>
+				<div class="container">
+					<div class="g-header--desktop-container flex-center">
+						<div class="g-header-logotype">
+							<a href="/" class="g-desktop-logotype"></a>
+						</div>
+						<div class="g-header-menu flex-center --right">
+							<nav class="g-desktop-menu flex-center">
+								<a href="/place-page.html" class="g-desktop-menu--item">Новости</a>
+								<a href="/place-page.html" class="g-desktop-menu--item">Путеводитель</a>
+								<a href="/place-page.html" class="g-desktop-menu--item">Места</a>
+								<a href="/place-page.html" class="g-desktop-menu--item">Преимущества</a>
+								<a href="/place-page.html" class="g-desktop-menu--item">Обратная связь</a>
+							</nav>
+							<div class="g-header-select-lang">
+								<ul class="g-select-lang">
+									<li class="g-selected-lang"><a href="#" onclick="return false;"><img src="img/icons/flag-russia.svg" alt="Русский язык"></a></li>
+									<ul class="g-parent-lang" style="display: none;">
+										<li><a href="#" onclick="return false;"><img src="img/icons/flag-russia.svg" alt="Русский язык"></a></li>
+										<li><a href="#" onclick="return false;"><img src="img/icons/flag-russia.svg" alt="Русский язык"></a></li>
+									</ul>
 								</ul>
-							</ul>
+							</div>
+							<div class="g-header-search">
+								<a href="#" onclick="return false;" class="g-header-search--icon"></a>
+							</div>
 						</div>
-
-						<div class="g-header-search">
-							<a href="#" onclick="return false;" class="g-header-search--icon"></a>
-						</div>
-
 					</div>
-
 				</div>
-				<div class="layout-space layout-space-right"></div>
 			</div>
 		</div>
 	</header>
 	<!-- end::Header -->
 
-	<div id="fullpage">
-		<div class="section">
+	<div id="pagepiling">
+		<div class="section" data-menu="white-mode">
 			<!-- begin::Slider -->
 			<section class="main-section section--main-slider" id="main-slider">
 				<!-- begin::Slider Images -->
@@ -173,7 +168,7 @@
 			</section>
 			<!-- end::Slider -->
 		</div>
-		<div class="section">
+		<div class="section" data-menu="white-mode">
 			<!-- begin::Section places -->
 			<section class="places-f-section section-sand-mode" data-inner="3">
 				<div class="places-f-section--container">
@@ -184,7 +179,7 @@
 								<p>Открой для себя весь Мангыстау</p>
 							</div>
 							<div class="f-section--right">
-								<a href="#" onclick="return false;" class="f-section--header-link dark-mode">Все места</a>
+								<a href="#" onclick="return false;" class="f-section--header-link white-mode">Все места</a>
 							</div>
 						</div>
 					</div>
@@ -342,7 +337,7 @@
 			</div>
 			<!-- end::Section places -->
 		</div>
-		<div class="section">
+		<div class="section" data-menu="dark-mode">
 			<!-- begin::Section guide -->
 			<section class="guide-f-section section-white-mode">
 				<div class="guide-f-section--container">
@@ -358,41 +353,41 @@
 						</div>
 					</div>
 					<div class="f-section--content">
-						<div class="guide-f-section-slider">
-							<div class="guide-f-section-slider--item">
-								<div class="container">
-									<div class="f-section--grid-col-3">
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-7.jpg');">
+						<div class="slider-grid--container">
+							<div class="guide-section--slider">
+								<div class="guide-section-slider--item">
+									<div class="guide-section--grid">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-7.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Активный отдых</h2>
 												<p>От дайвинга до горнолыжного курорта</p>
 											</div>							
 										</a>
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-6.jpg');">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-6.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Приключения</h2>
 												<p>Дикие преключения по шарам</p>
 											</div>							
 										</a>
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-5.jpg');">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-5.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Охота и рыбалка</h2>
 												<p>От дайвинга до горнолыжного курорта</p>
 											</div>							
 										</a>
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-4.jpg');">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-4.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Традиции</h2>
 												<p>Культра мангыстау</p>
 											</div>							
 										</a>
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-3.jpg');">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-3.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Музей</h2>
 												<p>Увидеть прекрасное</p>
 											</div>							
 										</a>
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-2.jpg');">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-2.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Театры</h2>
 												<p>Искусства сцены</p>
@@ -400,41 +395,39 @@
 										</a>
 									</div>
 								</div>
-							</div>
-							<div class="guide-f-section-slider--item">
-								<div class="container">
-									<div class="f-section--grid-col-3">
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-7.jpg');">
+								<div class="guide-section-slider--item">
+									<div class="guide-section--grid">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-7.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Активный отдых</h2>
 												<p>От дайвинга до горнолыжного курорта</p>
 											</div>							
 										</a>
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-6.jpg');">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-6.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Приключения</h2>
 												<p>Дикие преключения по шарам</p>
 											</div>							
 										</a>
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-5.jpg');">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-5.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Охота и рыбалка</h2>
 												<p>От дайвинга до горнолыжного курорта</p>
 											</div>							
 										</a>
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-4.jpg');">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-4.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Традиции</h2>
 												<p>Культра мангыстау</p>
 											</div>							
 										</a>
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-3.jpg');">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-3.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Музей</h2>
 												<p>Увидеть прекрасное</p>
 											</div>							
 										</a>
-										<a href="#" onclick="return false;" class="f-section--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-2.jpg');">
+										<a href="#" onclick="return false;" class="guide--grid-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, rgba(219, 181, 137, 0.375) 0%, rgba(194, 160, 121, 0.75) 100%), url('/img/example/example-2.jpg');">
 											<div class="f-section--grid-item--content">
 												<h2>Театры</h2>
 												<p>Искусства сцены</p>
@@ -450,9 +443,9 @@
 					</div>
 				</div>
 			</section>
-			<!-- end::Section duide -->
+			<!-- end::Section guide -->
 		</div>
-		<div class="section">
+		<div class="section" data-menu="white-mode">
 			<!-- begin::Section news -->
 			<section class="news-f-section section-sand-mode">
 				<div class="container">
@@ -463,7 +456,7 @@
 								<p>Открой для себя весь Мангыстау</p>
 							</div>
 							<div class="f-section--right">
-								<a href="#" onclick="return false;" class="f-section--header-link dark-mode">Все места</a>
+								<a href="#" onclick="return false;" class="f-section--header-link white-mode">Все места</a>
 							</div>
 						</div>
 						<div class="f-section--content">
@@ -557,7 +550,7 @@
 			</section>
 			<!-- end::Section news -->
 		</div>
-		<div class="section">
+		<div class="section" data-menu="white-mode">
 			<footer class="footer-f-section section-dark-mode">
 				<div class="footer-f-section--container">
 					<div class="footer-f-section--content">
@@ -660,26 +653,24 @@
 				</div>
 			</footer>
 		</div>
-		<div class="section fp-auto-height">
-			<div class="intro">
-				<section class="terms-section">
-					<div class="container">
-						<div class="terms-section--container">
-							<div class="terms-section--left">
-								<a href="#" onclick="return false;">Правила</a>
-								<a href="#" onclick="return false;">Соглашение</a>
-								<a href="#" onclick="return false;">Конфиденциальность</a>
-								<span class="footer-terms">Продолжая работу с сайтом, вы даете согласие на использование сайтом cookies и обработку персональных данных в соответствии с пользовательским соглашением</span>
-							</div>
-							<div class="terms-section--right">
-								<a href="https://parallax.pro/" target="_blank">
-									<img src="/img/logos/parallax.pro.png" alt="prod. by parallax.pro">
-								</a>
-							</div>
+		<div class="section">
+			<section class="terms-section">
+				<div class="container">
+					<div class="terms-section--container">
+						<div class="terms-section--left">
+							<a href="#" onclick="return false;">Правила</a>
+							<a href="#" onclick="return false;">Соглашение</a>
+							<a href="#" onclick="return false;">Конфиденциальность</a>
+							<span class="footer-terms">Продолжая работу с сайтом, вы даете согласие на использование сайтом cookies и обработку персональных данных в соответствии с пользовательским соглашением</span>
+						</div>
+						<div class="terms-section--right">
+							<a href="https://parallax.pro/" target="_blank">
+								<img src="/img/logos/parallax.pro.png" alt="prod. by parallax.pro">
+							</a>
 						</div>
 					</div>
-				</section>
-			</div>
+				</div>
+			</section>
 		</div>
 	</div>
 
@@ -691,18 +682,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
 
 	<script src="js/main.min.js"></script>
-
-	<script src="https://cdn.jsdelivr.net/npm/fullpage.js@3.0.8/vendors/scrolloverflow.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/fullpage.js@3.0.8/dist/fullpage.min.js"></script>
-	<script>
-		$('#fullpage').fullpage({
-			// scrollOverflow: true, // Vertical scroll inblock
-			scrollingSpeed: 500,
-			scrollBar: true,
-		});
-	</script>
 	<!--  -->
 
 </body>

@@ -20,11 +20,46 @@ $(function() {
 	});
 	// end::Guides slider
 
+	$('.guide-section--slider').slick({
+		arrows: false,
+		// autoplay: true,
+		autoplaySpeed: 3000,
+		centerMode: true,
+		// slidesToShow: 3,
+		// slidesToScroll: 1,
+	}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+
+		// console.log('currentSlide:'+ currentSlide + '');
+		// console.log('nextSlide:'+ nextSlide + '');
+
+		console.log(slick)
+
+		$(this).find('.slick-slide[data-slick-index="'+ currentSlide +'"]').addClass('customClass');
+		$(this).find('.slick-slide[data-slick-index="'+ nextSlide +'"]').removeClass('customClass');
+	});
+
+	$('#pagepiling').pagepiling({
+		navigation: false,
+
+		// Events
+		onLeave: function(index, nextIndex, direction) {
+			var $menu = $('#pagepiling .section.active').data('menu');
+			changeMenuMode($menu);
+		},
+	});
+
 });
 
-$(document).ready(function() {
-	// 
-});
+function changeMenuMode(data) {
+	
+	var $header = $('.g-header--desktop');
+
+	$header.removeClass('dark-mode');
+	$header.removeClass('sand-mode');
+	$header.removeClass('white-mode');
+
+	$header.addClass(data);
+}
 
 $(document).on('click', '.g-selected-lang', function(e) {
 	e.preventDefault();

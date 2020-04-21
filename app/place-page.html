@@ -27,7 +27,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="#B79069">
 
 	<!-- All Pages -->
-	<link rel="stylesheet" href="css/main.min.css">
+	<link rel="stylesheet" href="css/common.min.css">
 	<!--  -->
 
 	<!-- This Page -->	
@@ -48,23 +48,23 @@
 				<div class="g-header--desktop-container flex-center">
 					
 					<div class="g-header-logotype">
-						<a href="#" class="g-desktop-logotype" onclick="return false;"></a>
+						<a href="/" class="g-desktop-logotype"></a>
 					</div>
 
 					<div class="g-header-menu flex-center --right">
 						
 						<nav class="g-desktop-menu flex-center">
-							<a href="#" onclick="return false;" class="g-desktop-menu--item">Новости</a>
-							<a href="#" onclick="return false;" class="g-desktop-menu--item">Путеводитель</a>
-							<a href="#" onclick="return false;" class="g-desktop-menu--item">Места</a>
-							<a href="#" onclick="return false;" class="g-desktop-menu--item">Преимущества</a>
-							<a href="#" onclick="return false;" class="g-desktop-menu--item">Обратная связь</a>
+							<a href="/place-page.html" class="g-desktop-menu--item">Новости</a>
+							<a href="/place-page.html" class="g-desktop-menu--item">Путеводитель</a>
+							<a href="/place-page.html" class="g-desktop-menu--item">Места</a>
+							<a href="/place-page.html" class="g-desktop-menu--item">Преимущества</a>
+							<a href="/place-page.html" class="g-desktop-menu--item">Обратная связь</a>
 						</nav>
 
 						<div class="g-header-select-lang">
 							<ul class="g-select-lang">
 								<li class="g-selected-lang"><a href="#" onclick="return false;"><img src="img/icons/flag-russia.svg" alt="Русский язык"></a></li>
-								<ul class="g-parent-lang">
+								<ul class="g-parent-lang" style="display: none;">
 									<li><a href="#" onclick="return false;"><img src="img/icons/flag-russia.svg" alt="Русский язык"></a></li>
 									<li><a href="#" onclick="return false;"><img src="img/icons/flag-russia.svg" alt="Русский язык"></a></li>
 								</ul>
@@ -189,64 +189,119 @@
 
 	<!-- begin::Section places -->
 	<section class="places-f-section section-sand-mode" data-inner="3">
-		<div class="container">
-			<div class="places-f-section--container">
+		<div class="places-f-section--container">
+			<div class="container">
 				<div class="f-section--header">
 					<div class="f-section--title">
 						<h1>Места</h1>
 						<p>Открой для себя весь Мангыстау</p>
 					</div>
 					<div class="f-section--right">
-						<a href="#" onclick="return false;" class="f-section--header-link dark-mode">Все места</a>
+						<a href="#" onclick="return false;" class="f-section--header-link white-mode">Все места</a>
 					</div>
 				</div>
-				<div class="f-section--content">
-					
-					<div class="places-preview--cards">
-						<div class="places-preview--cards--layout-top">
-							<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-7.jpg');">
-								<div class="places-preview--cart-content">
-									<h2>Шеркала</h2>
-									<p>Место где все очень красиво</p>
+			</div>
+			<div class="f-section--content">
+				
+				<div class="places-preview--cards-slider">
+					<div class="places-preview--cards-slider--item">
+						<div class="container">
+							<div class="places-preview--cards">
+								<div class="places-preview--cards--layout-top">
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-7.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-8.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-9.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
 								</div>
-							</a>
-							<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-8.jpg');">
-								<div class="places-preview--cart-content">
-									<h2>Шеркала</h2>
-									<p>Место где все очень красиво</p>
+								<div class="places-preview--cards--layout-bottom">
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-6.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-5.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-4.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
 								</div>
-							</a>
-							<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-9.jpg');">
-								<div class="places-preview--cart-content">
-									<h2>Шеркала</h2>
-									<p>Место где все очень красиво</p>
-								</div>
-							</a>
-						</div>
-						<div class="places-preview--cards--layout-bottom">
-							<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-6.jpg');">
-								<div class="places-preview--cart-content">
-									<h2>Шеркала</h2>
-									<p>Место где все очень красиво</p>
-								</div>
-							</a>
-							<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-5.jpg');">
-								<div class="places-preview--cart-content">
-									<h2>Шеркала</h2>
-									<p>Место где все очень красиво</p>
-								</div>
-							</a>
-							<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-4.jpg');">
-								<div class="places-preview--cart-content">
-									<h2>Шеркала</h2>
-									<p>Место где все очень красиво</p>
-								</div>
-							</a>
+							</div>
 						</div>
 					</div>
+					<div class="places-preview--cards-slider--item">
+						<div class="container">
+							<div class="places-preview--cards">
+								<div class="places-preview--cards--layout-top">
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-5.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-6.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-4.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
+								</div>
+								<div class="places-preview--cards--layout-bottom">
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-8.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-3.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
+									<a href="#" onclick="return false;" class="places-preview--card" data-aos="fade-up" style="background: url('/img/example/example-1.jpg');">
+										<div class="places-preview--cart-content">
+											<h2>Шеркала</h2>
+											<p>Место где все очень красиво</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="container">
 					<div class="f-section-custom-dots"></div>
-
 				</div>
+
 			</div>
 		</div>
 	</section>

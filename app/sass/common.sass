@@ -83,10 +83,10 @@ h1, h2, h3
 
 .g-header--desktop
 	display: flex
-	*
-		transition: $transition
-		&:before, &:after
-			transition: $transition
+	// *
+	// 	transition: $transition
+	// 	&:before, &:after
+	// 		transition: $transition
 
 	&.white-mode
 		.g-desktop-menu--item
@@ -117,7 +117,6 @@ h1, h2, h3
 	&.dark-mode
 		.g-desktop-logotype
 			background-position: center
-
 
 .g-header--fixed
 	padding: 15px 0
@@ -234,6 +233,11 @@ section[class*='f-section'], footer[class*='f-section']
 		padding: 8px 16px
 		margin-left: 16px
 
+.section-sand-mode
+	.f-section--title
+		h1
+			color: white
+
 .f-section--header
 	width: 100%
 	padding: 30px 0
@@ -249,8 +253,20 @@ section[class*='f-section'], footer[class*='f-section']
 			content: ''
 			display: block
 			width: 28px
-			height: 8px
-			background: url('/img/icons/c-arrows-right.svg')
+			height: 28px
+			background: url('/img/icons/c-arrows.png')
+			background-size: 28px
+			background-position: top
+	&.white-mode
+		color: white
+		&:after
+			content: ''
+			display: block
+			width: 28px
+			height: 28px
+			background: url('/img/icons/c-arrows.png')
+			background-size: 28px
+			background-position: bottom
 	&:after
 		transition: $transition
 		margin-left: 10px
@@ -387,6 +403,7 @@ section[class*='f-section'], footer[class*='f-section']
 
 .terms-section
 	display: flex
+	width: 100%
 
 .footer-f-section--footer
 	display: flex
@@ -446,6 +463,7 @@ section[class*='f-section'], footer[class*='f-section']
 .terms-section--container
 	display: flex
 	align-items: center
+	padding: 150px 0
 
 .footer-terms
 	font-size: 10px
@@ -463,10 +481,13 @@ section[class*='f-section'], footer[class*='f-section']
 .terms-section--right img
 	height: 20px
 
+.guide-f-section
+	background: url('/img/white-bg.jpg')
+
 .guide-f-section, .places-f-section
 	flex-direction: column
 
-.guide-f-section-slider--item, .places-preview--cards-slider--item
+.guide-section--slider-item, .places-preview--cards-slider--item
 	padding: 5px 0
 
 .guide-f-section--container
@@ -479,25 +500,31 @@ section[class*='f-section'], footer[class*='f-section']
 	.f-section--content
 		width: 100%
 
-.f-section--grid-col-3
+.guide-section--grid
 	display: grid
 	grid-template-columns: 1fr 1fr 1fr
-	grid-gap: 30px
+	// grid-gap: 30px
 
-.f-section--grid-item
+.guide--grid-item
 	display: flex
 	justify-content: center
 	align-items: center
 	text-align: center
 	min-height: 250px
 	padding: 40px
+	margin: 15px
 	color: white
 	text-decoration: none
 	border-radius: 10px
 	overflow: hidden
+	// max-width: 430px
 	transition: $transition
 	background-size: cover !important
 	background-position: center !important
+	z-index: 1
+	&:hover
+		transform: translateY(-5px)
+		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1)
 
 .f-section--grid-item--content
 	h2
@@ -510,9 +537,6 @@ section[class*='f-section'], footer[class*='f-section']
 		opacity: 0.75
 		margin: 10px 0 0
 
-.f-section--grid-item:hover
-	transform: translateY(-5px)
-	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1)
 
 .news-preview--container
 	display: grid
@@ -628,5 +652,39 @@ section[class*='f-section'], footer[class*='f-section']
 	display: flex
 	flex-direction: column
 	padding: 100px 0
+
+.no--padding
+	padding: 0 !important
+
+.guide-section--slider
+	&:before, &:after
+		content: ''
+		position: absolute
+		display: block
+		width: 50px
+		height: 100%
+		background: url('../img/backgrounds/white-gradient.png')
+		background-size: 50px
+		background-repeat: repeat-y
+		z-index: 1
+	&:after
+		right: 0
+		top: 0
+		transform: rotate(180deg)
+	.slick-current
+		position: absolute
+		z-index: 999
+	// 	.guide--grid-item
+	// 		z-index: 99
+
+.slider-grid--container
+	width: 100%
+	max-width: 1600px
+	margin: 0 auto
+
+.pp-section.pp-table, .pp-tableCell
+	display: flex !important
+
+
 
 @import "media" // Всегда в конце
