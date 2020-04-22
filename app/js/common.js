@@ -12,34 +12,28 @@ $(function() {
 		$('.i-p--m_b--f-link').removeClass('hovered');
 	});
 
-	// begin::Guides and places slider
-	$('.guide-f-section-slider, .places-preview--cards-slider').slick({
+	// begin::Places section slider
+	$('.places-section--slider').slick({
 		arrows: false,
-		autoplay: true,
-		autoplaySpeed: 3000,
+		slidesToShow: 3,
+		infinite: false,
+		// slidesToScroll: 1
+		// autoplay: true,
+		// autoplaySpeed: 3000,
 	});
-	// end::Guides slider
+	// end::Places section slider
 
+	// begin::Guides section slider
 	$('.guide-section--slider').slick({
 		arrows: false,
-		// autoplay: true,
 		autoplaySpeed: 3000,
 		centerMode: true,
-		// slidesToShow: 3,
-		// slidesToScroll: 1,
-	}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-
-		// console.log('currentSlide:'+ currentSlide + '');
-		// console.log('nextSlide:'+ nextSlide + '');
-
-		console.log(slick)
-
-		$(this).find('.slick-slide[data-slick-index="'+ currentSlide +'"]').addClass('customClass');
-		$(this).find('.slick-slide[data-slick-index="'+ nextSlide +'"]').removeClass('customClass');
 	});
+	// end::Guides section slider
 
 	$('#pagepiling').pagepiling({
 		navigation: false,
+		scrollingSpeed: 100,
 
 		// Events
 		onLeave: function(index, nextIndex, direction) {
@@ -48,6 +42,13 @@ $(function() {
 		},
 	});
 
+});
+
+$(window).on('load', function() {
+	// console.log('Сайт загружен');
+	setTimeout(function() {
+		$('.holder').fadeOut().end().delay(400).fadeOut('slow');
+	}, 1000);
 });
 
 function changeMenuMode(data) {

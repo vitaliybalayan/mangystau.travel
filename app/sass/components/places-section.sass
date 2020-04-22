@@ -1,0 +1,196 @@
+@import '../vars'
+
+.places-preview--cards
+	position: relative
+	min-height: 586px
+
+// [class*='places-preview--cards--layout']
+	// position: absolute
+	// left: 0
+	// right: 0
+	// display: grid
+	// grid-template-columns: 1fr 1fr 1fr
+	// grid-column-gap: 30px
+
+// .places-preview--cards--layout-top
+// 	z-index: 2
+// 	.places-preview--card
+// 		&:nth-child(1)
+// 			height: 335px
+// 			clip-path: url('#places-mask--1')
+
+		&:nth-child(2)
+			height: 302px
+			clip-path: url('#places-mask--2')
+			.places-preview--cart-content
+				padding-bottom: 50px
+
+		&:nth-child(3)
+			height: 305px
+			clip-path: url('#places-mask--3')
+			.places-preview--cart-content
+				padding-bottom: 50px
+
+.places-preview--cards--layout-bottom
+	align-items: end
+	top: 230px
+	z-index: 1
+	.places-preview--card
+		&:nth-child(1)
+			height: 261px
+			clip-path: url('#places-mask--4')
+			.places-preview--cart-content
+				padding-top: 40px
+
+		&:nth-child(2)
+			height: 343px
+			clip-path: url('#places-mask--5')
+			.places-preview--cart-content
+				padding-top: 50px
+
+		&:nth-child(3)
+			height: 359px
+			clip-path: url('#places-mask--6')
+			.places-preview--cart-content
+				padding-top: 100px
+
+.places-section--slider-item--block
+	position: relative
+	display: block
+	background-size: cover !important
+	background-repeat: no-repeat !important
+	overflow: hidden
+	transition: $transition
+	text-decoration: none
+	&:hover
+		transform: translateZ(0) translateY(-5px) !important
+		.places-preview--cart-content
+			opacity: 1
+
+.places-section--slider
+	min-height: 586px
+	
+	.slick-list
+		// padding: 5px 0
+		&:before, &:after
+			content: ''
+			display: block
+			width: 50px
+			height: 100%
+			position: absolute
+			background: url('../img/backgrounds/sand-gradient.png')
+			background-size: 50px
+			z-index: 9
+		&:after
+			right: 0
+			top: 0
+			transform: rotate(-180deg)
+
+	.slick-slide
+
+		&:nth-child(6n + 1)
+			.places-section--slider-item--block
+				&:first-child
+					height: 335px
+					clip-path: url('#places-mask--1')
+				&:last-child
+					height: 261px
+					clip-path: url('#places-mask--4')
+		&:nth-child(6n + 2)
+			.places-section--slider-item--block
+				&:first-child
+					height: 302px
+					clip-path: url('#places-mask--2')
+				&:last-child
+					height: 343px
+					clip-path: url('#places-mask--5')
+		&:nth-child(6n + 3)
+			.places-section--slider-item--block
+				&:first-child
+					height: 305px
+					clip-path: url('#places-mask--3')
+				&:last-child
+					height: 359px
+					clip-path: url('#places-mask--6')
+		
+		&:nth-child(6n - 2)
+			.places-section--slider-item--block
+				&:first-child
+					height: 305px
+					clip-path: url('#places-mask--3')
+				&:last-child
+					height: 359px
+					clip-path: url('#places-mask--6')
+		&:nth-child(6n - 1)
+			.places-section--slider-item--block
+				&:first-child
+					height: 302px
+					clip-path: url('#places-mask--2')
+				&:last-child
+					height: 343px
+					clip-path: url('#places-mask--5')
+		&:nth-child(6n)
+			.places-section--slider-item--block
+				&:first-child
+					height: 335px
+					clip-path: url('#places-mask--1')
+				&:last-child
+					height: 261px
+					clip-path: url('#places-mask--4')
+
+		.places-section--slider-item--block
+			&:last-child
+				position: absolute
+				bottom: 0
+				width: 447px
+
+
+
+.places-preview--cart-content
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-direction: column
+	width: 100%
+	height: 100%
+	background: rgba(#B79069, 0.75)
+	color: white
+	opacity: 0
+	transition: $transition
+
+.svg-masked
+	position: absolute
+	top: -100vw
+	bottom: -100vh
+
+.places-preview--cart-content
+	h2
+		font-weight: normal
+		font-size: 36px
+		line-height: 100%
+	p
+		opacity: 0.75
+		font-size: 14px
+
+.places-section
+	flex-direction: column
+	width: 100%
+	padding: 50px 0
+	.places-section--container
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-direction: column
+		width: 100%
+		height: 100%
+	.section-content
+		width: 100%
+
+.preview-section--slider-item
+	padding: 5px 0
+
+.places-section
+	.slick-list
+		height: 586px
+	.slick-track
+		height: 100%
